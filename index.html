@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Página de Tarjetas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #da6085, #49d880, #e95c5c);
+      background-size: 200% 200%;
+      animation: bgAnimation 10s ease infinite;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh; /* Ajusta el alto para cubrir toda la pantalla */
+      color: white;
+    }
+    
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1280px; /* Espacio suficiente para 4 tarjetas */
+      display: flex;
+      flex-wrap: wrap; /* Permite que las tarjetas bajen cuando no haya espacio */
+      justify-content: center;
+      gap: 20px; /* Espaciado entre tarjetas */
+      align-items: flex-start; /* Asegura que todas las tarjetas se alineen arriba */
+    }
+    .card { 
+      width: 280px;
+      height: 580px;
+      perspective: 1000px;
+      margin: 0;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s;
+    }
+    .card.flipped .card-inner { /* con esto rotamos la tarjeta*/
+      transform: rotateY(180deg);
+    }
+
+    /* Lados de la tarjeta */
+    .card-front,
+    .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(88, 85, 85, 0.1);
+    }
+
+    /* Frente de la tarjeta */
+    .card-front {
+      background-color: #8bbea0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 80%;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 16px;
+      text-align: center;
+    }
+
+    .card-content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .card-content h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .card-content p {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.4;
+    } 
+
+    /* Parte trasera de la tarjeta */
+    .card-back {
+      background: linear-gradient(-45deg, #a628c5, #2a5298, #d84deb, #ff6a6a);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      transform: rotateY(180deg);
+      border-radius: 20px; /* Mantiene la estética redondeada */
+    }   
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }  /* disculpe si es muy elaborado, quise hacer un buen diseño para la rubrica*/
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1 style="text-align:center; margin-bottom: 30px;">League of Leguends </h1>
+
+  <div class="container">
+    
+    <div class="card" onclick="flipCard(this)"> <!-- aqui se rota la tarjeta que clickeamos -->
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Pantheon_38.jpg" alt="Neymar Jr">
+          <div class="card-content">
+            <h2>Pantheon</h2>
+            <h3>Luchador</h3>
+            <p>stats</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <h2>panteon</h2>
+          <p>tipo:
+            luchador / asesino
+          </p>
+          <p>Posición: top- mid - suport</p>
+          <p>daño explosivo en juego temprano</p>
+          <p>ulti global</p>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="card" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_1.jpg" alt="Aphelios">
+          <div class="card-content">
+            <h2>Aphelios</h2>
+            <h3>Tirador</h3>
+            <p>estats</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <h2>Aphelios</h2>
+          <p>tipo: tirador</p>
+          <p>Posición: bot</p>
+          <p>utiliza 5 armas diferentes</p>
+          <p>alto daño sostenido pero requiere practica</p>
+          <p>requiere buena coordinacion con su soporte</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="flipCard(this)"> <!-- aqui se rota la tarjeta que clickeamos -->
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akshan_1.jpg" alt="Neymar Jr">
+          <div class="card-content">
+            <h2>Akshan</h2>
+            <h3>Tirador</h3>
+            <p>stats</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <h2>Akshan</h2>
+          <p>tipo: tirador/peleador</p>
+          <p>Posición: mid - top</p>
+          <p>habilidades de movilidad con su gancho
+          </p>
+          <p>puede revivir aliados</p>
+          <p>alto daño explosivo</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" onclick="flipCard(this)"> 
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Samira_20.jpg" alt="Neymar Jr">
+          <div class="card-content">
+            <h2>Samira</h2>
+            <h3>Luchadora</h3>
+            <p>stats</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <h2>Samira</h2>
+          <p>tipo: luchadora/tiradora</p>
+          <p>Posición: bot - mid</p>
+          <p>estilo de juego agresivo</p>
+          <p>ejecuta multiples enemigos con su ulti</p>
+          <p>bloquea proyectiles</p>
+          <p>aprovecha el control de masas aliado</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div><!-- viv del contenedor -->
+  <script>
+    function flipCard(element) {
+      element.classList.toggle("flipped");
+    }
+  </script>
+
+</body>
+</html>
